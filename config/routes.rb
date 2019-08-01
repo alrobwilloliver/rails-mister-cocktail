@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'cocktails/home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'cocktails#home'
+  root to: 'cocktails#index'
 
-  get '/cocktails/:id', to: 'cocktails#show'
+  resources :cocktails do
+  	resources :doses, only: [ :destroy, :new, :create ], shallow: true
+  end
 end
