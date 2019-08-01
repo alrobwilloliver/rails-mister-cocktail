@@ -10,7 +10,7 @@ class DosesController < ApplicationController
     @dose = Dose.new(dose_params)
     # we need `cocktail_id` to asssociate dose with corresponding cocktail
     @dose.cocktail = @cocktail
-    if @dose.save!
+    if @dose.save
       redirect_to cocktail_path(@cocktail)
  	else
  	  render :new
